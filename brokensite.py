@@ -146,7 +146,3 @@ def brokensite():
                 else:
                     driver.quit()
                     print("All websites analysed, closing the driver...")
-
-
-brokensite()
-
