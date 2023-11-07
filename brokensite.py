@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from ping3 import ping
@@ -9,7 +9,6 @@ import os
 import time
 from datetime import datetime
 from checkwebsite import checkwebsite
-
 
 option = webdriver.ChromeOptions()
 option.add_argument("--headless")

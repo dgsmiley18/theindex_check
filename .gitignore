@@ -130,3 +130,11 @@ dmypy.json
 
 # txt files
 *.txt
+
+# idea
+
+.idea/
+
+# vscode
+
+.vscode/
