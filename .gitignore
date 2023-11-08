@@ -138,3 +138,7 @@ dmypy.json
 # vscode
 
 .vscode/
+
+# poetry
+poetry.lock
+pyproject.toml
