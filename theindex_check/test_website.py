@@ -1,20 +1,27 @@
 import requests
-
+import json
 
 def brokensite():
-    urls_index = ["anime", "hentai", "manga"]
-    for library in enumerate(urls_index):
-        # Start reading all the links from the file
-        with open(f"{library}.txt", "r") as reader:
-            for website in reader.readlines():
-                r = requests.get(f"http://{website}".strip())
+    
+    with open('items.json', 'r') as file:
+        data = json.load(file)
+        for website in data:
+            print(website["url"])
+            try:
+                r = requests.get(website['url'])
+            except requests.exceptions.ConnectionError as err:
+                print(f"Connection error occurred: {err}")
+                continue
+            except requests.exceptions.RequestException as err:
+                print(f"Other error occurred: {err}")
+                continue
 
-                with open(f"{library}_tested.txt", "w") as writer:
+            with open('websites_working.txt', 'a') as writer:
                     if r.status_code == 200:
-                        writer.write(f"{website} = Working")
+                        writer.write(f"{website['url']} = Working\n")
+                    elif r.status_code == 403:
+                        writer.write(f"{website['url']} = Forbidden (status code = {r.status_code})\n")
                     else:
-                        writer.write(
-                            f"{website} = Not Working (status code = {r.status_code}"
-                        )
+                        writer.write(f"{website['url']} = Not Working (status code = {r.status_code})\n")
 
 brokensite()
