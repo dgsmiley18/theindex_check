@@ -6,7 +6,7 @@ response = r.json()
 items = response["pageProps"]["items"]
 
 # List to store the items
-lista_items = []
+list_items = []
 
 for item in items:
     dictionary = {
@@ -14,8 +14,8 @@ for item in items:
         "url":  item["urls"][0]
     }
 
-    lista_items.append(dictionary)
+    list_items.append(dictionary)
 
 # It will store all the items in a JSON file
 with open("items.json", 'w') as file:
-    json.dump(lista_items, file, indent=4)
+    json.dump(list_items, file, indent=4)

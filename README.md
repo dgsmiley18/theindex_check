@@ -1,0 +1,1 @@
+script to test all the items from the website thewiki
